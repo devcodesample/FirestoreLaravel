@@ -1,0 +1,3 @@
+google Client ID : 627359963712-bkqt2eqqomb0lq89nqtsajou7sf3lqo2.apps.googleusercontent.com
+
+google Client Secret Id : HgrEP7WRiILhRsZvUHWbdlrV
