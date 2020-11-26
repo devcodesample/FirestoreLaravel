@@ -22,7 +22,7 @@
     `cp .env.example .env`
 
 - Provide database credentials <br>
-    Open `.env` file using your favourite editor `nano .env`
+    Open `.env` file using your favourite editor
     and update database detail by change values for the following variables: <br>
     `DB_HOST=127.0.0.1` <br>
     `DB_PORT=3306` <br>
