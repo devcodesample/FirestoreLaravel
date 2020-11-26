@@ -7,9 +7,7 @@
 ## Installation
 
 - Install `PHP` <br>
-    `sudo add-apt-repository ppa:ondrej/php` <br>
-    `sudo apt update` <br>
-    `sudo apt install php7.4 sudo apt-get install -y php7.4-{bcmath,bz2,intl,gd,mbstring,mysql,zip,common}`
+    Follow the instructions on the [official website](https://www.php.net/manual/en/install.php)
     
 - Install `Composer` <br>
     Follow the instructions on the [official website](https://getcomposer.org/download/)
