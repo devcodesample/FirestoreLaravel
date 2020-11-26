@@ -19,11 +19,7 @@ use App\Models\FileList;
 //     return view('welcome');
 // });
  
-Route::get('/',function (){
- $allFile = FileList::all();
- return view('list', compact(['allFile']));
-});
-
-Route::post('add/file',[FirebaseController::class,'store'])->name('file.store');
-Route::get('/test',[FirebaseController::class,'index']);
-Route::get('/data',[FirebaseController::class,'selectAlldata']);
+Route::get('/',[FirebaseController::class,'index']); 
+Route::post('add/file',[FirebaseController::class,'store'])->name('file.store');  
+Route::post('update/file',[FirebaseController::class,'updatefile'])->name('file.update');
+Route::get('delete/file/{id}',[FirebaseController::class,'destory']);

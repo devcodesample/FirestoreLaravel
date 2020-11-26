@@ -14,6 +14,7 @@
     <link href="https://fonts.googleapis.com/css?family=Nunito" rel="stylesheet">
     <link href="https://fonts.googleapis.com/css?family=Nunito:200,200i,300,300i,400,400i,600,600i,700,700i,800,800i,900,900i" rel="stylesheet">
     <link href="{{asset('vendor/fontawesome-free/css/all.min.css')}}" rel="stylesheet" type="text/css">
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
      <!-- Custom styles for this page -->
   <link href="{{asset('vendor/datatables/dataTables.bootstrap4.min.css')}}" rel="stylesheet">
   <link   href="{{asset('vendor/datatables/dataTables.bootstrap4.css')}}">
@@ -51,35 +52,35 @@
                 <span>Dashboard</span></a>
             </li>
           <!-- Divider -->
-          <hr class="sidebar-divider">
+          <!-- <hr class="sidebar-divider"> -->
           <!-- Nav Item - Pages Collapse Menu -->
-          <li class="nav-item">
+          <!-- <li class="nav-item">
           <a class="nav-link collapsed"  href="#">
           <i class="fa fa-list" aria-hidden="true"></i>
-          <span>List 1</span>
+          <span> </span>
           </a>
           </li>
           <li class="nav-item">
           <a class="nav-link collapsed" href="#" >
           <i class="fa fa-list" aria-hidden="true"></i>
-          <span>List 2 </span>
+          <span>  </span>
           </a>
           </li>
 
           <li class="nav-item">
           <a class="nav-link collapsed" href="#">
           <i class="fa fa-list" aria-hidden="true"></i>
-          <span>List 3</span>
+          <span> </span>
           </a>
-          </li>
+          </li> -->
 
 <!-- Divider -->
 <hr class="sidebar-divider d-none d-md-block">
 
 <!-- Sidebar Toggle (Sidebar) -->
-<div class="text-center d-none d-md-inline">
+<!-- <div class="text-center d-none d-md-inline">
   <button class="rounded-circle border-0" id="sidebarToggle"></button>
-</div>
+</div> -->
 
 </ul>
 
@@ -131,10 +132,10 @@
               <a class="nav-link dropdown-toggle" href="#" id="userDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
                 <span class="mr-2 d-none d-lg-inline text-dark small"> </span>
                    
-                <!-- <img class="img-profile rounded-circle" src="../public/img/default.png" alt=""> -->
+                <img class="img-profile rounded-circle" src="img/default.png" alt="">
               </a>
               <!-- Dropdown - User Information -->
-              <div class="dropdown-menu dropdown-menu-right shadow animated--grow-in" aria-labelledby="userDropdown">
+              <!-- <div class="dropdown-menu dropdown-menu-right shadow animated--grow-in" aria-labelledby="userDropdown">
                 <a class="dropdown-item" href="#" data-toggle="modal" data-target="#logoutModal" role="button" aria-haspopup="true" aria-expanded="false">
                     <i class="fas fa-sign-out-alt fa-sm fa-fw mr-2 text-gray-400"></i>
                    
@@ -149,7 +150,7 @@
                    </form>
                   </div>
                 </a>
-              </div>
+              </div> -->
 
             </li>
         </ul>
@@ -181,7 +182,7 @@
   </a>
 
   <!-- Logout Modal-->
-  <div class="modal fade" id="logoutModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+  <!-- <div class="modal fade" id="logoutModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
     <div class="modal-dialog" role="document">
       <div class="modal-content">
         <div class="modal-header">
@@ -199,7 +200,7 @@
       </div>
     </div>
   </div>
-  </div>
+  </div> -->
   <!-- Bootstrap core JavaScript-->
 
 <script src="{{asset('vendor/jquery/jquery.min.js')}}"></script>
