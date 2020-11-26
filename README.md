@@ -13,7 +13,7 @@
     Follow the instructions on the [official website](https://getcomposer.org/download/)
     
 - Clone the repository <br>
-    `git clone git@github.com:hamad2/firestorelaravel.git`
+    `git clone https://github.com/hamad2/firestorelaravel.git`
 
 - Navigate to the repo directory <br>
     `cd firestorelaravel`
