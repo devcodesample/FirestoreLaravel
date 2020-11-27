@@ -1,8 +1,6 @@
 <?php
 
 use Illuminate\Support\Facades\Route;
-use App\Http\Controllers\FirebaseController;
-use App\Models\FileList;
 
 /*
 |--------------------------------------------------------------------------
@@ -15,11 +13,23 @@ use App\Models\FileList;
 |
 */
 
-// Route::get('/', function () {
-//     return view('welcome');
-// });
- 
-Route::get('/',[FirebaseController::class,'index']); 
-Route::post('add/file',[FirebaseController::class,'store'])->name('file.store');  
-Route::post('update/file',[FirebaseController::class,'updatefile'])->name('file.update');
-Route::get('delete/file/{id}',[FirebaseController::class,'destory']);
+Route::get('/', function () {
+    return view('welcome');
+});
+
+Auth::routes();
+
+Route::get('/home', 'HomeController@index')->name('home');
+Auth::routes();
+
+Route::get('/home', 'HomeController@index')->name('home');
+
+Route::group(['middleware' => 'auth'], function () {
+	Route::resource('user', 'UserController', ['except' => ['show']]);
+	Route::get('profile', ['as' => 'profile.edit', 'uses' => 'ProfileController@edit']);
+	Route::put('profile', ['as' => 'profile.update', 'uses' => 'ProfileController@update']);
+	Route::put('profile/password', ['as' => 'profile.password', 'uses' => 'ProfileController@password']);
+	Route::get('{page}', ['as' => 'page.index', 'uses' => 'PageController@index']);
+	Route::post('save/{type}', ['as' => 'page.save', 'uses' => 'PageController@save']);
+});
+
