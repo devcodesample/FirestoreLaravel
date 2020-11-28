@@ -61,3 +61,108 @@
   max-width: 530px;
   margin: 0 auto;
 }
+.action-add {
+  float: right;
+  position: relative;
+  bottom: 56px;
+  background-color:transparent;
+  }
+  .action-add:hover{
+  background-color:transparent;
+  }
+  /* .form-control {
+  height: 40px;
+  box-shadow: none;
+  color: #969fa4;
+  } */
+  .form-control, .btn {        
+  border-radius: 3px;
+  }
+  .signup-form .hint-text {
+  color: #999;
+  margin-bottom: 30px;
+  text-align: center;
+  }
+  .signup-form .form-group {
+  margin-bottom: 20px;
+  }
+  .signup-form .btn {        
+  font-size: 16px;
+  font-weight: bold;		
+  min-width: 140px;
+  outline: none !important;
+  }
+  .signup-form .row div:first-child {
+  padding-right: 10px;
+  }
+  .signup-form .row div:last-child {
+  padding-left: 10px;
+  }    	
+  .signup-form a {
+  color: #fff;
+  text-decoration: underline;
+  }
+  .signup-form a:hover {
+  text-decoration: none;
+  }
+  .signup-form form a {
+  color: #5cb85c;
+  text-decoration: none;
+  }	
+  .signup-form form a:hover {
+  text-decoration: underline;
+  }
+  .btn-xs{
+  color: #fff;
+  background-color: #398439;
+  border-color: #255625;
+  }
+  .action-delete:hover{
+  background-color:transparent;
+  }
+  .action-trash{
+  content: "\f2ed";
+  color: red;
+  text-align: center;
+  }
+  thead.action-head {
+  background: f96332;
+  background: #f96332;
+  color: white;
+  font-weight: 900;
+  }
+  .alert.alert-success {
+    background-color: #7be0bb;
+    color: #000;
+}
+
+.office-card{
+  padding:10px;
+  border:1px solid #ccc;
+}
+.card .action-delete{
+  float: right;
+  position: absolute;
+  right: 18px;
+  top: 22px;
+  background: #fff;
+  padding: 13px;
+  border-radius: 20px;
+}
+.form-check .form-check-label{
+  padding-left:0px;
+  display: block;
+}
+.form-check input[type="checkbox"], .radio input[type="radio"]{
+  opacity:1;
+  visibility:visible;
+}
+.list-group{
+  display: block;
+}
+td.text-center .action-delete{
+  float: none;
+  position: relative;
+  top: 0;
+  right:0 ;
+}

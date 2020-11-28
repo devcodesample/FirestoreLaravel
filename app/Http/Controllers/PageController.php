@@ -13,18 +13,42 @@ class PageController extends Controller
         $this->db = app('firebase.firestore')->database();
     }
  
-    public function index(string $page='users')
-    {           
-        
-        $citiesRef = $this->db->collection($page);
-        $snapshot = $citiesRef->documents();
-        //print_r($snapshot);
-        if (view()->exists("pages.{$page}")) {
-            return view("pages.{$page}")->with(array('snapshot'=>$snapshot));;
+    public function index(string $page='users',string $type="")
+    {          // echo $page."#".$type;
+        if($page!="offices"){
+            $citiesRef = $this->db->collection($page);
+            $snapshot = $citiesRef->documents();
+            if (view()->exists("pages.{$page}")) {
+                return view("pages.{$page}")->with(array('snapshot'=>$snapshot));;
+            }
+        }else{
+            $data=[];
+            $officeRef = $this->db->collection("offices");
+            $data["officeList"] = $officeRef->documents();
+            $data["type"]=$type;
+            if(!empty($type)){
+                $typeRef = $this->db->collection('offices')->document($type)->collection('officeList');
+                $data["snapshot"] = $typeRef->documents();
+            }//print_r($snapshot);
+            if (view()->exists("pages.{$page}")) {
+                return view("pages.{$page}")->with($data);;
+            }
         }
+
+        //print_r($snapshot);
+        
         return abort(404);
     }
-
+    public function deleteRecord($type,$id)
+    {
+        if($type!="offices"){
+            $this->db->collection($type)->document($id)->delete();
+        }
+        else{
+            $this->db->collection('offices')->document('taxService')->collection('officeList')->document($id)->delete();
+        }    
+        return redirect()->back()->with(['message' =>'Record Deleted successfully']);
+    } 
     public function save(Request $request,$type)
     {
        if($type=="users"){
@@ -49,18 +73,32 @@ class PageController extends Controller
             'country' => $request->input('Country'),
         ];
         $docRef->set($data);
-      }elseif($type=="foods"){
-          
+      }elseif($type=="officetype"){
+       $name=$request->input('type');
+        $docRef = $this->db->collection("offices")->document($name);
+        $data = [
+            'name' => $name,
+        ];
+        $docRef->set($data);
       }elseif($type=="offices"){
-        $docRef = $this->db->collection($type)->newDocument();
+        $fileName = null;
+        $path="";
+        if ($request->hasFile('photoUrl')!=null) {
+            $file = $request->file('photoUrl');
+            $fileName = md5($file->getClientOriginalName() . time()) . "." . $file->getClientOriginalExtension();
+            //$destinationPath = public_path('/uploads');
+            $destinationPath = public_path('/images');
+            $file->move($destinationPath, $fileName);
+            //$path = $file->storeAs(public_path('/uploads'), $fileName);
+        }
+        $officeType=$request->input('officeType');
+        $docRef = $this->db->collection('offices')->document($officeType)->collection('officeList')->newDocument();
         $docId= $docRef->id();
         $data = [
             'id' => $docId,
             'name' => $request->input('name'),
-            'email' => $request->input('email'),
-            'phoneNumber' => $request->input('phoneNumber'),
-            'city' => $request->input('City'),
-            'state' => $request->input('State'),
+            'photoUrl' => $fileName ,
+            'state' => $request->input('states'),
         ];
         $docRef->set($data);
     }

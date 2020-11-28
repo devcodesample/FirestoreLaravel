@@ -4,10 +4,8 @@
 'activePage' => 'table',
 ])
 @section('content')
-<style type="text/css">
-   /* .card-header {
-   display: flex;
-   } */
+<!-- <style type="text/css">
+  
    .action-add {
    float: right;
    position: relative;
@@ -62,9 +60,21 @@
    btn-outline-danger{
    color:#f96332;
    }
-</style>
-<div class="panel-header panel-header-sm">
-</div>
+   .action-delete:hover{
+   background-color:transparent;
+   }
+   .action-trash{
+   content: "\f2ed";
+   color: red;
+   text-align: center;
+   }
+   thead.action-head {
+   background: #f96332;
+   color: white;
+   font-weight: 900;
+   }
+</style> -->
+<div class="panel-header panel-header-sm"></div>
 <div class="content">
    <div class="row">
       <div class="col-md-12">
@@ -75,8 +85,8 @@
             </div>
             <div class="card-body">
                <div class="table-responsive">
-                  <table class="table">
-                     <thead class=" text-primary">
+                  <table class="table table-bordered">
+                     <thead class="action-head">
                         <th>
                            Name
                         </th>
@@ -89,6 +99,7 @@
                         <th class="text-right">
                            Salary
                         </th>
+                        <th class="text-center"> Delete</th>
                      </thead>
                      <tbody>
                         <tr>
@@ -104,6 +115,7 @@
                            <td class="text-right">
                               $36,738
                            </td>
+                           <td class="text-center"><a class="action-delete" ><i class="far fa-trash-alt action-trash"></i></a></td>
                         </tr>
                         <tr>
                            <td>
@@ -118,6 +130,7 @@
                            <td class="text-right">
                               $23,789
                            </td>
+                           <td class="text-center"><a class="action-delete" ><i class="far fa-trash-alt action-trash"></i></a></td>
                         </tr>
                         <tr>
                            <td>
@@ -132,6 +145,7 @@
                            <td class="text-right">
                               $56,142
                            </td>
+                           <td class="text-center"><a class="action-delete" ><i class="far fa-trash-alt action-trash"></i></a></td>
                         </tr>
                         <tr>
                            <td>
@@ -146,6 +160,7 @@
                            <td class="text-right">
                               $38,735
                            </td>
+                           <td class="text-center"><a class="action-delete" ><i class="far fa-trash-alt action-trash"></i></a></td>
                         </tr>
                         <tr>
                            <td>
@@ -160,6 +175,7 @@
                            <td class="text-right">
                               $63,542
                            </td>
+                           <td class="text-center"><a class="action-delete" ><i class="far fa-trash-alt action-trash"></i></a></td>
                         </tr>
                         <tr>
                            <td>
@@ -174,6 +190,7 @@
                            <td class="text-right">
                               $78,615
                            </td>
+                           <td class="text-center"><a class="action-delete" ><i class="far fa-trash-alt action-trash"></i></a></td>
                         </tr>
                         <tr>
                            <td>
@@ -188,6 +205,7 @@
                            <td class="text-right">
                               $98,615
                            </td>
+                           <td class="text-center"><a class="action-delete" ><i class="far fa-trash-alt action-trash"></i></a></td>
                         </tr>
                      </tbody>
                   </table>
