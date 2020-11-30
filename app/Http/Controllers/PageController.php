@@ -15,7 +15,7 @@ class PageController extends Controller
  
     public function index(string $page='users',string $type="")
     {          // echo $page."#".$type;
-        if($page!="offices"){
+        if($page!="office"){
             $citiesRef = $this->db->collection($page);
             $snapshot = $citiesRef->documents();
             if (view()->exists("pages.{$page}")) {
@@ -23,13 +23,14 @@ class PageController extends Controller
             }
         }else{
             $data=[];
-            $officeRef = $this->db->collection("offices");
-            $data["officeList"] = $officeRef->documents();
+            $officeRef = $this->db->collection("office");
+            $data["officeList"] = (!empty($officeRef->documents()))?$officeRef->documents():array();
             $data["type"]=$type;
             if(!empty($type)){
-                $typeRef = $this->db->collection('offices')->document($type)->collection('officeList');
+                $typeRef = $this->db->collection('office')->document($type)->collection('officeList');
                 $data["snapshot"] = $typeRef->documents();
-            }//print_r($snapshot);
+            }
+            //print_r($data);
             if (view()->exists("pages.{$page}")) {
                 return view("pages.{$page}")->with($data);;
             }
@@ -41,11 +42,11 @@ class PageController extends Controller
     }
     public function deleteRecord($type,$id)
     {
-        if($type!="offices"){
+        if($type!="office"){
             $this->db->collection($type)->document($id)->delete();
         }
         else{
-            $this->db->collection('offices')->document('taxService')->collection('officeList')->document($id)->delete();
+            $this->db->collection('office')->document('taxService')->collection('officeList')->document($id)->delete();
         }    
         return redirect()->back()->with(['message' =>'Record Deleted successfully']);
     } 
@@ -75,12 +76,12 @@ class PageController extends Controller
         $docRef->set($data);
       }elseif($type=="officetype"){
        $name=$request->input('type');
-        $docRef = $this->db->collection("offices")->document($name);
+        $docRef = $this->db->collection("office")->document($name);
         $data = [
             'name' => $name,
         ];
         $docRef->set($data);
-      }elseif($type=="offices"){
+      }elseif($type=="office"){
         $fileName = null;
         $path="";
         if ($request->hasFile('photoUrl')!=null) {
@@ -92,7 +93,7 @@ class PageController extends Controller
             //$path = $file->storeAs(public_path('/uploads'), $fileName);
         }
         $officeType=$request->input('officeType');
-        $docRef = $this->db->collection('offices')->document($officeType)->collection('officeList')->newDocument();
+        $docRef = $this->db->collection('office')->document($officeType)->collection('officeList')->newDocument();
         $docId= $docRef->id();
         $data = [
             'id' => $docId,

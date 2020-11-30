@@ -78,9 +78,13 @@
               </div>   
               <div class="card-body">
               <ul class="list-group">
-              <?php foreach ($officeList as $row) { ?>
-                  <li class="list-group-item <?php echo $row->id()==$type?'active':'';?>"><a href="{{ url('offices/'.$row->id()) }}">{{$row->id()}}</li>
-              <?php } ?>    
+              <?php
+              if(!empty($officeList)){
+                foreach ($officeList ?? '' as $row) {
+          
+               ?>
+                  <li class="list-group-item <?php echo $row->id()==$type ?? ''?'active':'';?>"><a href="{{ url('office/'.$row->id()) }}">{{$row->id()}}</li>
+              <?php }    } ?>    
                 </ul>
               </div> 
           </div>    
@@ -99,13 +103,15 @@
               <div class="alert alert-success">  {{Session::get("message")}} </div>
         <?php endif; ?>
         <?php if(!empty($snapshot)): 
-        foreach ($snapshot as $row) {?>
+        foreach ($snapshot as $row) {
+          
+          ?>
         <div class="card office-card" style="width: 12rem;">
-        <a class="action-delete"  href="javascript:;" rel="{{ url('deleteRecord/offices/'.$row->id()) }}"><i class="far fa-trash-alt action-trash"></i></a>
-          <img src="{{asset('images/'.$row['photoUrl'])}}" height="100" class="card-img-top" src="..." alt="Card image cap"/>
+        <a class="action-delete"  href="javascript:;" rel="{{ url('deleteRecord/office/'.$row->id()) }}"><i class="far fa-trash-alt action-trash"></i></a>
+          <img src="{{asset('images/'.($row['photoUrl'] ?? 'https://dummyimage.com/100x100/ccc/000'))}}" height="100" class="card-img-top" src="..." alt="Card image cap"/>
           <div class="card-body">
-            <h6 class="card-title">{{$row['name']}}</h6>
-            <p class="card-text">{{ is_array($row['state'])?implode(", ",$row['state']):''}}</p>
+            <h6 class="card-title">{{$row['name']?? ''}}</h6>
+            <p class="card-text">{{ is_array(($row['state'] ?? []))?implode(", ",($row['state'] ?? [])):''}}</p>
           </div>
         </div>
         <?php }
@@ -130,7 +136,7 @@
             <span aria-hidden="true">&times;</span>
             </button>
          </div>
-         <form method="POST" action="/save/offices" enctype="multipart/form-data" >
+         <form method="POST" action="/save/office" enctype="multipart/form-data" >
          @csrf
          <div class="modal-body">
             <div class="signup-form">
@@ -138,7 +144,7 @@
                   <div class="form-group">
                   <label for="name">Name</label>
                      <input type="text" class="form-control" name="name" >
-                     <input type="hidden" class="form-control" name="officeType" value="{{ $type }}" >
+                     <input type="hidden" class="form-control" name="officeType" value="{{ $type ?? '' }}" >
                   </div>
                   <div class="form-group">
                   <label for="name">Image URL</label>
